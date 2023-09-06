@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.css": "/react-doge/static/css/main.31d6cfe0.css",
+    "main.js": "/react-doge/static/js/main.e4fa0f9e.js",
+    "index.html": "/react-doge/index.html",
+    "main.e4fa0f9e.js.map": "/react-doge/static/js/main.e4fa0f9e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.e4fa0f9e.js"
+  ]
+}
