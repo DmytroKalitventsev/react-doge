@@ -1,0 +1,1 @@
+export const apiDoge = 'https://dog.ceo/api';

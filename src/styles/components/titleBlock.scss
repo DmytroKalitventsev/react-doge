@@ -1,0 +1,14 @@
+.title-block {
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	align-items: center;
+	color: #e3e3e3;
+	text-align: center;
+
+	&__title {
+		font-size: 1.75rem;
+	}
+
+	&__num-images {
+	}
+}
