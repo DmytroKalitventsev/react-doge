@@ -2,18 +2,12 @@ import { useEffect, useState } from 'react';
 import { apiDoge } from '../API';
 import '../styles/components/creatorPictures.scss';
 
-const CreatorPictures = ({ setPicturesDoge }) => {
-	const [listBreeds, setListBreeds] = useState([]);
-	const [listSubBreeds, setListSubBreeds] = useState([]);
+const CreatorPictures = ({ getUrlPictures }) => {
 	const [valSelectBreed, setValSelectBreed] = useState('random');
 	const [valSelectSubBreed, setValSelectSubBreed] = useState('random');
+	const [listBreeds, setListBreeds] = useState([]);
+	const [listSubBreeds, setListSubBreeds] = useState([]);
 	const [countImg, setCountImg] = useState(1);
-
-	const getUrlPictures = url => {
-		return fetch(url)
-			.then(response => response.json())
-			.then(json => setPicturesDoge(json.message));
-	}
 
 	const getListBreeds = url => {
 		return fetch(url)
@@ -25,6 +19,20 @@ const CreatorPictures = ({ setPicturesDoge }) => {
 		return fetch(url)
 			.then(response => response.json())
 			.then(json => setListSubBreeds(json.message));
+	}
+
+	const changePictures = (e) => {
+		e.preventDefault();
+
+		const subBreed = valSelectSubBreed === 'random'
+			? ''
+			: `/${valSelectSubBreed}`;
+
+		const breed = valSelectBreed === 'random'
+			? 'breeds/image'
+			: `breed/${valSelectBreed}${subBreed}/images`;
+
+		getUrlPictures(`${apiDoge}/${breed}/random/${countImg}`);
 	}
 
 	useEffect(() => {
@@ -42,21 +50,6 @@ const CreatorPictures = ({ setPicturesDoge }) => {
 
 		getListSubBreeds(`${apiDoge}/breed/${valSelectBreed}/list`);
 	}, [valSelectBreed]);
-
-	const changePictures = (e) => {
-		e.preventDefault();
-
-		const subBreed = valSelectSubBreed === 'random'
-			? ''
-			: `/${valSelectSubBreed}`;
-
-		const breed = valSelectBreed === 'random'
-			? 'breeds/image'
-			: `breed/${valSelectBreed}${subBreed}/images`;
-
-		getUrlPictures(`${apiDoge}/${breed}/random/${countImg}`);
-	}
-
 
 	return (
 		<form onSubmit={changePictures} className='creator-pictures'>

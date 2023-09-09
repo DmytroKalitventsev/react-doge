@@ -1,0 +1,27 @@
+.error-page {
+	display: grid;
+	gap: 30px;
+	color: #e3e3e3;
+
+	&_silver-text {
+		color: #6b6b6b;
+	}
+
+	&__logo {
+		max-width: 200px;
+	}
+
+	&__status {
+		font-size: 36px;
+	}
+
+	&__text-status {
+	}
+
+	&__url {
+		font-size: 30px;
+	}
+
+	&__text-url {
+	}
+}

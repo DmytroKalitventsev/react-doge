@@ -1,9 +1,14 @@
 .title-block {
 	display: grid;
-	grid-template-columns: repeat(2, auto);
+	grid-template-columns: repeat(3, auto);
 	align-items: center;
 	color: #e3e3e3;
 	text-align: center;
+
+	&__logo {
+		justify-self: center;
+		width: 30px;
+	}
 
 	&__title {
 		font-size: 1.75rem;
