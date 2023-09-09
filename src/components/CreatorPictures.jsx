@@ -1,6 +1,9 @@
+import '../styles/components/creatorPictures.scss';
 import { useEffect, useState } from 'react';
 import { apiDoge } from '../API';
-import '../styles/components/creatorPictures.scss';
+import Select from './UI/Select';
+import Button from './UI/Button';
+import Input from './UI/Input';
 
 const CreatorPictures = ({ getUrlPictures }) => {
 	const [valSelectBreed, setValSelectBreed] = useState('random');
@@ -53,23 +56,20 @@ const CreatorPictures = ({ getUrlPictures }) => {
 
 	return (
 		<form onSubmit={changePictures} className='creator-pictures'>
-			<button className='creator-pictures__element'>Generate img</button>
-			<select
+			<Button text={'Generate img'} />
+
+			<Select
+				listData={Object.keys(listBreeds)}
 				onChange={e => setValSelectBreed(e.target.value)}
 				value={valSelectBreed}
-				className='creator-pictures__element'
 			>
 				<option value="random">Random breed</option>
-				{
-					Object.keys(listBreeds).map((breed, index) =>
-						<option key={index} value={breed}>{breed}</option>
-					)
-				}
-			</select>
-			<select
+			</Select>
+
+			<Select
+				listData={listSubBreeds}
 				onChange={e => setValSelectSubBreed(e.target.value)}
 				value={valSelectSubBreed}
-				className='creator-pictures__element'
 			>
 				{
 					listSubBreeds.length
@@ -78,23 +78,11 @@ const CreatorPictures = ({ getUrlPictures }) => {
 						:
 						<option value="random">sub-breeds not found</option>
 				}
-				{
-					listSubBreeds.map((subBreed, index) =>
-						<option key={index} value={subBreed} > {subBreed}</option>
-					)
-				}
-			</select>
-			<input
+			</Select>
+
+			<Input
 				onChange={e => setCountImg(e.target.value)}
 				value={countImg}
-				className='creator-pictures__element creator-pictures__element_count'
-				type="number"
-				name="countPictures"
-				placeholder='Count img from 1 to 50'
-				pattern='\d*'
-				min='1'
-				max='50'
-				required
 			/>
 		</form>
 	);
